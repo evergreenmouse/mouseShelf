@@ -37,5 +37,7 @@ extension PreferencesViewController: PreferencesViewInput {
 }
 
 extension PreferencesViewController: PreferencesViewDelegate {
-    
+    func preferencesViewDidPressedRootCatalogButton(_ view: PreferencesView) {
+        print("need to show Finder")
+    }
 }

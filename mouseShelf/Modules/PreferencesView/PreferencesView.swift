@@ -18,6 +18,8 @@ class PreferencesView: NSView {
     private lazy var rootCatalogLabel: NSTextField = {
         let label = NSTextField()
         label.isEditable = false
+        label.isBordered = false
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         label.stringValue = "Выберите корневую папку для создания проектов"
         return label
@@ -60,7 +62,7 @@ class PreferencesView: NSView {
     }
     
     @objc private func rootCatalogButtonWasPressed(_ sender: NSButton) {
-        
+        delegate?.preferencesViewDidPressedRootCatalogButton(self)
     }
     
 }
