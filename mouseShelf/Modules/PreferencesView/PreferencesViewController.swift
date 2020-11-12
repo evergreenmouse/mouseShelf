@@ -8,10 +8,34 @@
 import Cocoa
 
 class PreferencesViewController: NSViewController {
+    
+    var presenter: PreferencesViewOutput?
+    
+    private lazy var preferencesView: PreferencesView = {
+       let view = PreferencesView()
+        view.delegate = self
+        return view
+    }()
+    
+    override func loadView() {
+        view = preferencesView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        PreferencesConfigurator().configure(viewController: self)
+        
+        presenter?.viewIsReady(self)
     }
+    
+}
+
+extension PreferencesViewController: PreferencesViewInput {
+    func reloadSettingsData() {
+        print("reload settings data")
+    }
+}
+
+extension PreferencesViewController: PreferencesViewDelegate {
     
 }

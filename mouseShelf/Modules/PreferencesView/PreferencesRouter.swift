@@ -5,4 +5,8 @@
 //  Created by Александр Ополовников on 12.11.2020.
 //
 
-import Foundation
+import Cocoa
+
+class PreferencesRouter: PreferencesRouterProtocol {
+    weak var viewController: NSViewController?
+}
