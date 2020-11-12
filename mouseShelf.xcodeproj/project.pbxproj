@@ -24,7 +24,23 @@
 		CA4C6575255D9E8500D9DBEC /* PreferencesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C6574255D9E8500D9DBEC /* PreferencesInteractor.swift */; };
 		CA4C6578255D9E9200D9DBEC /* PreferencesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C6577255D9E9200D9DBEC /* PreferencesRouter.swift */; };
 		CA4C657C255DA80400D9DBEC /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C657B255DA80400D9DBEC /* PreferencesView.swift */; };
+		CA4C6580255DAF9D00D9DBEC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */; };
+		CA4C6581255DAF9D00D9DBEC /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA4C6582255DAF9D00D9DBEC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA4C6581255DAF9D00D9DBEC /* SnapKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CA4C6522255D6EB500D9DBEC /* mouseShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mouseShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +63,7 @@
 		CA4C6574255D9E8500D9DBEC /* PreferencesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesInteractor.swift; sourceTree = "<group>"; };
 		CA4C6577255D9E9200D9DBEC /* PreferencesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesRouter.swift; sourceTree = "<group>"; };
 		CA4C657B255DA80400D9DBEC /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/Mac/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4C6580255DAF9D00D9DBEC /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +83,7 @@
 			children = (
 				CA4C6524255D6EB500D9DBEC /* mouseShelf */,
 				CA4C6523255D6EB500D9DBEC /* Products */,
+				CA4C657E255DAF9D00D9DBEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +177,14 @@
 			path = PreferencesView;
 			sourceTree = "<group>";
 		};
+		CA4C657E255DAF9D00D9DBEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,6 +195,8 @@
 				CA4C651E255D6EB500D9DBEC /* Sources */,
 				CA4C651F255D6EB500D9DBEC /* Frameworks */,
 				CA4C6520255D6EB500D9DBEC /* Resources */,
+				CA4C6582255DAF9D00D9DBEC /* Embed Frameworks */,
+				CA4C6583255DAFCC00D9DBEC /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -223,6 +252,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CA4C6583255DAFCC00D9DBEC /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/SnapKit.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncarthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA4C651E255D6EB500D9DBEC /* Sources */ = {
@@ -385,6 +436,10 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 99L7S2CZE3;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = mouseShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,6 +464,10 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 99L7S2CZE3;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = mouseShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
