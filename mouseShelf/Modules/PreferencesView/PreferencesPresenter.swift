@@ -14,14 +14,20 @@ class PreferencesPresenter {
 }
 
 extension PreferencesPresenter: PreferencesViewOutput {
+    
     func viewIsReady(_ view: PreferencesViewInput) {
         interactor?.fetchUserRootCatalog()
+    }
+    
+    func view(_ view: PreferencesViewInput, rootCatalogWasChanged newRootCatalog: URL) {
+        interactor?.setUserRootCatalog(with: newRootCatalog)
     }
 }
 
 extension PreferencesPresenter: PreferencesInteractorOutput {
     func interactor(_ interactor: PreferencesInteractorInput, didFetchUserRootCatalog url: URL?) {
-        print(url)
+        guard let url = url else { return }
+        view?.reloadRootCatalog(with: url)
     }
     
     func interactor(_ interactor: PreferencesInteractorInput, didFetchUserSettings userSettings: [String : Any]?) {
@@ -29,7 +35,7 @@ extension PreferencesPresenter: PreferencesInteractorOutput {
     }
     
     func interactor(_ interactor: PreferencesInteractorInput, didEncounterError error: Error) {
-        //view. handle an Error
+        //TODO: view. handle an Error
     }
     
     

@@ -12,7 +12,7 @@ class PreferencesViewController: NSViewController {
     var presenter: PreferencesViewOutput?
     
     private lazy var preferencesView: PreferencesView = {
-       let view = PreferencesView()
+        let view = PreferencesView()
         view.delegate = self
         return view
     }()
@@ -34,10 +34,18 @@ extension PreferencesViewController: PreferencesViewInput {
     func reloadSettingsData() {
         print("reload settings data")
     }
+    
+    func reloadRootCatalog(with url: URL) {
+        preferencesView.rootCatalogPathControl.url = url
+    }
 }
 
 extension PreferencesViewController: PreferencesViewDelegate {
-    func preferencesViewDidPressedRootCatalogButton(_ view: PreferencesView) {
-        print("need to show Finder")
+    func preferencesViewDidPressedCancelButton(_ view: PreferencesView) {
+        
+    }
+    
+    func preferencesViewDidPressedSaveButton(_ view: PreferencesView, withNewRootCatalog url: URL) {
+        presenter?.view(self, rootCatalogWasChanged: url)
     }
 }

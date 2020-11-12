@@ -9,10 +9,12 @@ import Foundation
 
 protocol PreferencesViewOutput: class {
     func viewIsReady(_ view: PreferencesViewInput)
+    func view(_ view: PreferencesViewInput, rootCatalogWasChanged newRootCatalog: URL)
 }
 
 protocol PreferencesViewInput: class {
     func reloadSettingsData()
+    func reloadRootCatalog(with url: URL)
 }
 
 protocol PreferencesInteractorInput: class {
