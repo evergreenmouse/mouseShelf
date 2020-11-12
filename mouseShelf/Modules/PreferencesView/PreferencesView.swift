@@ -28,8 +28,8 @@ class PreferencesView: NSView {
     
     lazy var rootCatalogPathControl: NSPathControl = {
         let pathControl = NSPathControl()
-        pathControl.url = URL(string: NSHomeDirectory())
         pathControl.pathStyle = .popUp
+        pathControl.delegate = self
         return pathControl
     }()
     
@@ -105,3 +105,13 @@ class PreferencesView: NSView {
         delegate?.preferencesViewDidPressedSaveButton(self, withNewRootCatalog: url)
     }
 }
+
+extension PreferencesView: NSPathControlDelegate {
+    func pathControl(_ pathControl: NSPathControl, willPopUp menu: NSMenu) {
+        while menu.items.count >= 4 {
+            menu.items.remove(at: 3)
+        }
+    }
+    
+}
+

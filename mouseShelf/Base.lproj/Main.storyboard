@@ -70,7 +70,7 @@
                             <pathControl toolTip="Ds,thbnt" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sc5-xi-pKf">
                                 <rect key="frame" x="74" y="207" width="204" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <pathCell key="cell" controlSize="small" selectable="YES" editable="YES" alignment="left" placeholderString="Ds,thbnt" pathStyle="popUp" id="9eD-TG-vQs">
+                                <pathCell key="cell" controlSize="small" selectable="YES" alignment="left" placeholderString="Ds,thbnt" pathStyle="popUp" id="9eD-TG-vQs">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file://localhost/Applications/"/>
                                 </pathCell>

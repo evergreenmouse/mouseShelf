@@ -23,6 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        UserDefaults.standard.removeObject(forKey: "com.user.rootCatalog")
+        
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         let itemImage = NSImage(named: "clock")
