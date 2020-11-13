@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showPreferences(_ sender: Any) {
-        let check = PreferencesViewController()
-        let window = NSWindow(contentViewController: check)
+        let preferencesViewController = PreferencesViewController()
+        let window = NSWindow(contentViewController: preferencesViewController)
         window.makeKeyAndOrderFront(nil)
     }
     
