@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -58,19 +57,6 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
-        </scene>
-        <!--Preferences View Controller-->
-        <scene sceneID="Xzz-pH-2E0">
-            <objects>
-                <viewController storyboardIdentifier="preferencesID" id="rcj-kM-aMN" customClass="PreferencesViewController" customModule="mouseShelf" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="iPC-YH-i7X">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="5bm-iB-ySC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-261" y="139"/>
         </scene>
     </scenes>
 </document>

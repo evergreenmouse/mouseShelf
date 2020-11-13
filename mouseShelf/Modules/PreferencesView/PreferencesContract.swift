@@ -8,11 +8,14 @@
 import Foundation
 
 protocol PreferencesViewOutput: class {
+    var outlineManager: OutlineDataManager? { get }
     func viewIsReady(_ view: PreferencesViewInput)
+    func view(_ view: PreferencesViewInput, rootCatalogWasChanged newRootCatalog: URL)
 }
 
 protocol PreferencesViewInput: class {
     func reloadSettingsData()
+    func reloadRootCatalog(with url: URL)
 }
 
 protocol PreferencesInteractorInput: class {

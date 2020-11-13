@@ -12,10 +12,10 @@ final class DataStorageService {
     static let instanse = DataStorageService()
     
     func fetchUserRootCatalog() -> URL? {
-        guard let rootCatalogURL = UserDefaults.standard.value(forKey: "com.user.rootCatalog") as? URL else {
+        guard let rootCatalogURL = UserDefaults.standard.value(forKey: "com.user.rootCatalog") as? String else {
             return nil
         }
-        return rootCatalogURL
+        return URL(string: rootCatalogURL)
     }
     
     func setUserRootCatalog(with url: URL) {
