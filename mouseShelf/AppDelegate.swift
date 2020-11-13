@@ -23,8 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UserDefaults.standard.removeObject(forKey: "com.user.rootCatalog")
-        
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         let itemImage = NSImage(named: "clock")
@@ -38,9 +36,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showPreferences(_ sender: Any) {
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateController(withIdentifier: .init(stringLiteral: "preferencesID")) as? PreferencesViewController else { return }
-
         let check = PreferencesViewController()
         let window = NSWindow(contentViewController: check)
         window.makeKeyAndOrderFront(nil)

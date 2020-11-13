@@ -80,7 +80,7 @@ class PreferencesView: NSView {
         horizontalLine.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview()
-            make.top.equalTo(rootCatalogPathControl.snp.bottom).offset(16)
+            make.top.equalTo(rootCatalogPathControl.snp.bottom).offset(8)
         }
         
         saveButton.snp.makeConstraints { make in
