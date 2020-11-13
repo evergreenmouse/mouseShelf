@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="GenerateView" customModule="mouseShelf" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="276" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cLc-Ht-9tv">
+                    <rect key="frame" x="6" y="69" width="264" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Введите название проекта" id="F3m-8U-aKG">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cmf-r6-mid">
+                    <rect key="frame" x="8" y="39" width="260" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="JZu-B5-7BC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t3u-1g-9yv">
+                    <rect key="frame" x="92" y="3" width="93" height="32"/>
+                    <buttonCell key="cell" type="push" title="Создать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x1l-ZR-uXk">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="generateButtonPressed:" target="c22-O7-iKe" id="uGx-En-UiJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Cmf-r6-mid" firstAttribute="top" secondItem="cLc-Ht-9tv" secondAttribute="bottom" constant="8" id="21E-iv-QcU"/>
+                <constraint firstItem="Cmf-r6-mid" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="9pY-gl-aU2"/>
+                <constraint firstAttribute="trailing" secondItem="Cmf-r6-mid" secondAttribute="trailing" constant="8" id="BQi-X6-Xqr"/>
+                <constraint firstItem="t3u-1g-9yv" firstAttribute="top" secondItem="Cmf-r6-mid" secondAttribute="bottom" constant="8" id="EXe-ue-mgu"/>
+                <constraint firstItem="t3u-1g-9yv" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="FHw-JE-GSo"/>
+                <constraint firstAttribute="trailing" secondItem="cLc-Ht-9tv" secondAttribute="trailing" constant="8" id="I6d-Pw-zhT"/>
+                <constraint firstAttribute="bottom" secondItem="t3u-1g-9yv" secondAttribute="bottom" constant="10" id="JlJ-FC-o7o"/>
+                <constraint firstItem="cLc-Ht-9tv" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="Ub6-cA-HBr"/>
+                <constraint firstItem="cLc-Ht-9tv" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="nqj-un-Pf1"/>
+            </constraints>
+            <connections>
+                <outlet property="generateButton" destination="t3u-1g-9yv" id="Lsg-el-n6v"/>
+                <outlet property="textField" destination="Cmf-r6-mid" id="f5I-Ff-5aG"/>
+                <outlet property="titleLabel" destination="cLc-Ht-9tv" id="vZC-4A-dUe"/>
+            </connections>
+            <point key="canvasLocation" x="-59" y="160"/>
+        </customView>
+    </objects>
+</document>
