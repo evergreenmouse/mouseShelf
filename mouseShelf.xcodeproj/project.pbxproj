@@ -26,6 +26,10 @@
 		CA4C657C255DA80400D9DBEC /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C657B255DA80400D9DBEC /* PreferencesView.swift */; };
 		CA4C6580255DAF9D00D9DBEC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */; };
 		CA4C6581255DAF9D00D9DBEC /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA4C6589255E85D100D9DBEC /* TEstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4C6588255E85D100D9DBEC /* TEstView.xib */; };
+		CAAEDC5D255EC523009D3279 /* OutlineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAEDC5C255EC523009D3279 /* OutlineDataManager.swift */; };
+		CAAEDC64255EC632009D3279 /* FolderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAEDC63255EC632009D3279 /* FolderItem.swift */; };
+		CAAEDC68255EC893009D3279 /* OutlineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAEDC67255EC893009D3279 /* OutlineTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +68,10 @@
 		CA4C6577255D9E9200D9DBEC /* PreferencesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesRouter.swift; sourceTree = "<group>"; };
 		CA4C657B255DA80400D9DBEC /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/Mac/SnapKit.framework; sourceTree = "<group>"; };
+		CA4C6588255E85D100D9DBEC /* TEstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TEstView.xib; sourceTree = "<group>"; };
+		CAAEDC5C255EC523009D3279 /* OutlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineDataManager.swift; sourceTree = "<group>"; };
+		CAAEDC63255EC632009D3279 /* FolderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderItem.swift; sourceTree = "<group>"; };
+		CAAEDC67255EC893009D3279 /* OutlineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				CA4C653E255D703900D9DBEC /* CommonView.swift */,
+				CA4C6588255E85D100D9DBEC /* TEstView.xib */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -166,6 +175,8 @@
 		CA4C655B255D7F9300D9DBEC /* PreferencesView */ = {
 			isa = PBXGroup;
 			children = (
+				CAAEDC60255EC60E009D3279 /* Model */,
+				CA4C6587255E852500D9DBEC /* TableDataAndManagers */,
 				CA4C6566255D9D2F00D9DBEC /* PreferencesViewController.swift */,
 				CA4C656B255D9E4200D9DBEC /* PreferencesContract.swift */,
 				CA4C656E255D9E6200D9DBEC /* PreferencesConfigurator.swift */,
@@ -183,6 +194,23 @@
 				CA4C657F255DAF9D00D9DBEC /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA4C6587255E852500D9DBEC /* TableDataAndManagers */ = {
+			isa = PBXGroup;
+			children = (
+				CAAEDC5C255EC523009D3279 /* OutlineDataManager.swift */,
+				CAAEDC67255EC893009D3279 /* OutlineTableCell.swift */,
+			);
+			path = TableDataAndManagers;
+			sourceTree = "<group>";
+		};
+		CAAEDC60255EC60E009D3279 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAAEDC63255EC632009D3279 /* FolderItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +276,7 @@
 				CA4C6556255D7C6500D9DBEC /* EmptySettingsView.xib in Resources */,
 				CA4C6545255D719E00D9DBEC /* GenerateView.xib in Resources */,
 				CA4C652D255D6EB600D9DBEC /* Main.storyboard in Resources */,
+				CA4C6589255E85D100D9DBEC /* TEstView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,15 +312,18 @@
 				CA4C6559255D7C9300D9DBEC /* EmptySettingsView.swift in Sources */,
 				CA4C6578255D9E9200D9DBEC /* PreferencesRouter.swift in Sources */,
 				CA4C656F255D9E6200D9DBEC /* PreferencesConfigurator.swift in Sources */,
+				CAAEDC64255EC632009D3279 /* FolderItem.swift in Sources */,
 				CA4C657C255DA80400D9DBEC /* PreferencesView.swift in Sources */,
 				CA4C6567255D9D2F00D9DBEC /* PreferencesViewController.swift in Sources */,
 				CA4C6526255D6EB500D9DBEC /* AppDelegate.swift in Sources */,
 				CA4C654D255D78AA00D9DBEC /* GenerateViewConfigurator.swift in Sources */,
 				CA4C6572255D9E7300D9DBEC /* PreferencesPresenter.swift in Sources */,
+				CAAEDC68255EC893009D3279 /* OutlineTableCell.swift in Sources */,
 				CA4C6575255D9E8500D9DBEC /* PreferencesInteractor.swift in Sources */,
 				CA4C656C255D9E4200D9DBEC /* PreferencesContract.swift in Sources */,
 				CA4C6552255D795800D9DBEC /* DataStorage.swift in Sources */,
 				CA4C653F255D703900D9DBEC /* CommonView.swift in Sources */,
+				CAAEDC5D255EC523009D3279 /* OutlineDataManager.swift in Sources */,
 				CA4C6548255D71AD00D9DBEC /* GenerateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,12 @@ class PreferencesConfigurator {
         let presenter = PreferencesPresenter()
         let interactor = PreferencesInteractor()
         let router = PreferencesRouter()
+        
+        let outlineDataManager = OutlineDataManager()
 
+        presenter.outlineManager = outlineDataManager
+        outlineDataManager.delegate = presenter
+        
         presenter.interactor = interactor
         interactor.presenter = presenter
 

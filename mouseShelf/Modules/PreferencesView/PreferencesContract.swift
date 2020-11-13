@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PreferencesViewOutput: class {
+    var outlineManager: OutlineDataManager? { get }
     func viewIsReady(_ view: PreferencesViewInput)
     func view(_ view: PreferencesViewInput, rootCatalogWasChanged newRootCatalog: URL)
 }

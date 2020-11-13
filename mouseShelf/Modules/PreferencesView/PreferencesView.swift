@@ -11,6 +11,8 @@ import SnapKit
 protocol PreferencesViewDelegate: class {
     func preferencesViewDidPressedCancelButton(_ view: PreferencesView)
     func preferencesViewDidPressedSaveButton(_ view: PreferencesView, withNewRootCatalog url: URL)
+    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView)
+    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView)
 }
 
 class PreferencesView: NSView {
@@ -46,6 +48,21 @@ class PreferencesView: NSView {
     
     private lazy var saveButton: NSButton = {
         let button = NSButton(title: "Save", target: self, action: #selector(saveButtonWasPressed(_:)))
+        return button
+    }()
+    
+    lazy var outlineView: NSOutlineView = {
+        let outlineView = NSOutlineView()
+        return outlineView
+    }()
+    
+    private lazy var addFolderButton: NSButton = {
+        let button = NSButton()
+        return button
+    }()
+    
+    private lazy var deleteFolderButton: NSButton = {
+        let button = NSButton()
         return button
     }()
     
@@ -104,6 +121,14 @@ class PreferencesView: NSView {
         guard let url = rootCatalogPathControl.url else { return }
         delegate?.preferencesViewDidPressedSaveButton(self, withNewRootCatalog: url)
     }
+    
+    @objc private func addFolderButtonWasPressed(_ sender: NSButton) {
+        
+    }
+    
+    @objc private func deleteFolderButtonWasPressed(_ sender: NSButton) {
+        
+    }
 }
 
 extension PreferencesView: NSPathControlDelegate {
@@ -112,6 +137,5 @@ extension PreferencesView: NSPathControlDelegate {
             menu.items.remove(at: 3)
         }
     }
-    
 }
 

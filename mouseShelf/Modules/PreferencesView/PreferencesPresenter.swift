@@ -11,6 +11,7 @@ class PreferencesPresenter {
     weak var view: PreferencesViewInput?
     var router: PreferencesRouterProtocol?
     var interactor: PreferencesInteractorInput?
+    var outlineManager: OutlineDataManager?
 }
 
 extension PreferencesPresenter: PreferencesViewOutput {
@@ -37,6 +38,6 @@ extension PreferencesPresenter: PreferencesInteractorOutput {
     func interactor(_ interactor: PreferencesInteractorInput, didEncounterError error: Error) {
         //TODO: view. handle an Error
     }
-    
-    
 }
+
+extension PreferencesPresenter: OutlineDataManagerDelegate { }

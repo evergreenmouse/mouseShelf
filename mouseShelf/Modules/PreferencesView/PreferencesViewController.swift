@@ -24,8 +24,13 @@ class PreferencesViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         PreferencesConfigurator().configure(viewController: self)
-        
+        setupOutlineView()
         presenter?.viewIsReady(self)
+    }
+    
+    private func setupOutlineView() {
+        preferencesView.outlineView.delegate = presenter?.outlineManager
+        preferencesView.outlineView.dataSource = presenter?.outlineManager
     }
     
 }
@@ -48,4 +53,8 @@ extension PreferencesViewController: PreferencesViewDelegate {
     func preferencesViewDidPressedSaveButton(_ view: PreferencesView, withNewRootCatalog url: URL) {
         presenter?.view(self, rootCatalogWasChanged: url)
     }
+    
+    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView) { }
+    
+    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView) { }
 }
