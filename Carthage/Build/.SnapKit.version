@@ -2,10 +2,10 @@
   "commitish" : "5.0.1",
   "Mac" : [
     {
-      "hash" : "093336defa4ca2622b51c1eb5f18a5964cbed0153e3c5686ecf3b6ec9b35e1b9",
+      "hash" : "75f19146c534f2f70bb0920874e6f375940f1203f928e46967b943e966394043",
       "name" : "SnapKit",
       "linking" : "dynamic",
-      "swiftToolchainVersion" : "5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)"
+      "swiftToolchainVersion" : "5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)"
     }
   ]
 }
