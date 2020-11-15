@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DataStorageService.fetchUserRootCatalog():DataStorage.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PreferencesView.saveButtonWasPressed(_:):PreferencesView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GenerateView.createFolders():GenerateView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GenerateView.createRootFolders():GenerateView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "DataStorageService.instanse.foldersStructure.folders">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

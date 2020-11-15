@@ -11,8 +11,9 @@ import SnapKit
 protocol PreferencesViewDelegate: class {
     func preferencesViewDidPressedCancelButton(_ view: PreferencesView)
     func preferencesViewDidPressedSaveButton(_ view: PreferencesView, withNewRootCatalog url: URL)
-    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView)
-    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView)
+    
+    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView, selectedFolder: Folder?)
+    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView, selectedFolder: Folder?, fromFolder: Folder?)
 }
 
 class PreferencesView: NSView {
@@ -32,6 +33,7 @@ class PreferencesView: NSView {
         let pathControl = NSPathControl()
         pathControl.pathStyle = .popUp
         pathControl.delegate = self
+        pathControl.allowedTypes = ["public.folder"]
         return pathControl
     }()
     
@@ -51,18 +53,41 @@ class PreferencesView: NSView {
         return button
     }()
     
+    private lazy var scrollView: NSScrollView = {
+        let scrollView = NSScrollView()
+        scrollView.borderType = .grooveBorder
+        scrollView.documentView = outlineView
+        return scrollView
+    }()
+    
+    private lazy var outlineLabel: NSTextField = {
+        let label = NSTextField()
+        label.isEditable = false
+        label.isBordered = false
+        label.backgroundColor = .clear
+        label.stringValue = "Настройте структуру проекта"
+        return label
+    }()
+    
     lazy var outlineView: NSOutlineView = {
-        let outlineView = NSOutlineView()
+        let outlineView = NSOutlineView(frame: .zero)
+        outlineView.headerView = nil
+        let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column"))
+        outlineView.addTableColumn(column)
+        column.isEditable = true
+        outlineView.isEnabled = true
         return outlineView
     }()
     
     private lazy var addFolderButton: NSButton = {
-        let button = NSButton()
+        guard let addImageName = NSImage(named: NSImage.addTemplateName) else { return NSButton() }
+        let button = NSButton(image: addImageName, target: self, action: #selector(addFolderButtonWasPressed(_:)))
         return button
     }()
     
     private lazy var deleteFolderButton: NSButton = {
-        let button = NSButton()
+        guard let deleteImageName = NSImage(named: NSImage.removeTemplateName) else { return NSButton() }
+        let button = NSButton(image: deleteImageName, target: self, action: #selector(deleteFolderButtonWasPressed(_:)))
         return button
     }()
     
@@ -77,14 +102,40 @@ class PreferencesView: NSView {
     
     private func setupViews() {
         autoresizingMask = [.width, .height]
+        addSubview(outlineLabel)
+        addSubview(scrollView)
+
+        addSubview(addFolderButton)
+        addSubview(deleteFolderButton)
+        
         addSubview(rootCatalogLabel)
         addSubview(rootCatalogPathControl)
         addSubview(horizontalLine)
         addSubview(cancelButton)
         addSubview(saveButton)
         
+        outlineLabel.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview().inset(16)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(8)
+            make.height.equalTo(240)
+            make.top.equalTo(outlineLabel.snp.bottom).offset(8)
+        }
+        
+        addFolderButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16)
+            make.top.equalTo(scrollView.snp.bottom).offset(4)
+        }
+        
+        deleteFolderButton.snp.makeConstraints { make in
+            make.leading.equalTo(addFolderButton.snp.trailing).offset(4)
+            make.centerY.equalTo(addFolderButton.snp.centerY)
+        }
+        
         rootCatalogLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalTo(addFolderButton.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(16)
             make.trailing.equalToSuperview().inset(95)
         }
@@ -123,11 +174,17 @@ class PreferencesView: NSView {
     }
     
     @objc private func addFolderButtonWasPressed(_ sender: NSButton) {
-        
+        let selectedFolder = outlineView.item(atRow: outlineView.selectedRow) as? Folder
+        delegate?.preferencesViewDidPressedAddFolderButton(self, selectedFolder: selectedFolder)
+        outlineView.reloadData()
+        outlineView.expandItem(selectedFolder)
     }
     
     @objc private func deleteFolderButtonWasPressed(_ sender: NSButton) {
-        
+        guard let selectedFolder = outlineView.item(atRow: outlineView.selectedRow) as? Folder else { return }
+        let parentFolder = outlineView.parent(forItem: selectedFolder) as? Folder
+        delegate?.preferencesViewDidPressedDeleteFolderButton(self, selectedFolder: selectedFolder, fromFolder: parentFolder)
+        outlineView.reloadData()
     }
 }
 
@@ -139,3 +196,8 @@ extension PreferencesView: NSPathControlDelegate {
     }
 }
 
+extension PreferencesView: NSOpenSavePanelDelegate {
+    func panelSelectionDidChange(_ sender: Any?) {
+        print("qq")
+    }
+}

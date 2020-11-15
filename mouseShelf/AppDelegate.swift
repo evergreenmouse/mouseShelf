@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusItem: NSStatusItem?
     var generateView: GenerateView?
+    
+    var isReadyToShowCreatingView = true
 
     func applicationDidFinishLaunching(_ aNotification: Notification) { }
 
@@ -35,23 +37,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    func configureMenu() {
+        
+            
+        
+    }
+    
     @IBAction func showPreferences(_ sender: Any) {
         let preferencesViewController = PreferencesViewController()
         let window = NSWindow(contentViewController: preferencesViewController)
         window.makeKeyAndOrderFront(nil)
     }
     
-    private func prepareForItemShow() {
-        if let _ = firstMenuItem {
-
-        }
+    private func prepareForItemShow(item: NSMenuItem) {
+        
+    }
+    
+    private func showEmptyView(item: NSMenuItem) {
+        let emptyView = EmptySettingsView(frame: NSRect(x: 0, y: 0, width: 276, height: 112))
+        item.view = emptyView
+    }
+    
+    private func showCreateView(item: NSMenuItem) {
+        let createView = GenerateView(frame: NSRect(x: 0, y: 0, width: 276, height: 92))
+        
+        item.view = createView
     }
     
 }
 
 extension AppDelegate: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-        prepareForItemShow()
+        guard let _ = DataStorageService.instanse.fetchUserRootCatalog(),
+              let _ = DataStorageService.instanse.fetchUserFolderStructure() else {
+            isReadyToShowCreatingView = false
+            return
+        }
+        isReadyToShowCreatingView = true
+        
+        if let item = firstMenuItem {
+            if isReadyToShowCreatingView {
+                showCreateView(item: item)
+            } else {
+                showEmptyView(item: item)
+            }
+        }
     }
 }
 

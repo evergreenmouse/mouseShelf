@@ -17,7 +17,16 @@ class PreferencesInteractor: PreferencesInteractorInput {
         presenter?.interactor(self, didFetchUserRootCatalog: userRootCatalog)
     }
     
+    func fetchUserFolderStructure() {
+        let userFolderStructure = userDataDelegate?.fetchUserFolderStructure()
+        presenter?.interactor(self, didFetchUserFolderStructure: userFolderStructure)
+    }
+    
     func setUserRootCatalog(with url: URL) {
         userDataDelegate?.setUserRootCatalog(with: url)
+    }
+    
+    func setUserFolderStructure(with structure: Model?) {
+        userDataDelegate?.setUserFolderStructure(with: structure)
     }
 }

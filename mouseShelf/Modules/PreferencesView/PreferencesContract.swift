@@ -20,11 +20,13 @@ protocol PreferencesViewInput: class {
 
 protocol PreferencesInteractorInput: class {
     func fetchUserRootCatalog()
+    func fetchUserFolderStructure()
     func setUserRootCatalog(with url: URL)
+    func setUserFolderStructure(with structure: Model?)
 }
 
 protocol PreferencesInteractorOutput: class {
-    func interactor(_ interactor: PreferencesInteractorInput, didFetchUserSettings userSettings: [String: Any]?)
+    func interactor(_ interactor: PreferencesInteractorInput, didFetchUserFolderStructure folderStructure: Model?)
     func interactor(_ interactor: PreferencesInteractorInput, didFetchUserRootCatalog url: URL?)
     func interactor(_ interactor: PreferencesInteractorInput, didEncounterError error: Error)
 }

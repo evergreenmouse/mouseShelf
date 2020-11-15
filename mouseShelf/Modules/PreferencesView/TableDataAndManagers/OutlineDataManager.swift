@@ -11,23 +11,58 @@ protocol OutlineDataManagerDelegate: class { }
 
 class OutlineDataManager: NSObject {
     
-    let foldersStructure = [FolderItem]()
+    let dataService = DataStorageService.instanse
+    
+    weak var outlineView: NSOutlineView?
     
     weak var delegate: OutlineDataManagerDelegate?
+    
+    func createFolder(withTitle title: String, inFolder folder: Folder?) {
+        dataService.createFolder(withTitle: title, inFolder: folder)
+    }
+    
+    func remove(folder: Folder, fromFolder: Folder?) {
+        dataService.remove(folder: folder, fromFolder: fromFolder)
+    }
     
 }
 
 extension OutlineDataManager: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        return 2
+        if let item = item as? Folder {
+            return item.totalItems
+        }
+        return dataService.foldersStructure.totalFolders
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        return NSView()
+        if let item = item as? Folder {
+            return item.items[index]
+        }
+        return dataService.foldersStructure.folders[index]
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return true
+        if let item = item as? Folder {
+            return item.items.count > 0
+        }
+        
+        return false
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
+        return nil
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        if let item = item as? Folder {
+            let cell = OutlineTableCell()
+            cell.configure(with: item)
+            cell.outlineView = outlineView
+            return cell
+        }
+       
+        return nil
     }
 }
 

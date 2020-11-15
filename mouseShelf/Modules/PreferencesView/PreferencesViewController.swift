@@ -31,13 +31,14 @@ class PreferencesViewController: NSViewController {
     private func setupOutlineView() {
         preferencesView.outlineView.delegate = presenter?.outlineManager
         preferencesView.outlineView.dataSource = presenter?.outlineManager
+        presenter?.outlineManager?.outlineView = preferencesView.outlineView
     }
     
 }
 
 extension PreferencesViewController: PreferencesViewInput {
     func reloadSettingsData() {
-        print("reload settings data")
+        preferencesView.outlineView.reloadData()
     }
     
     func reloadRootCatalog(with url: URL) {
@@ -45,7 +46,7 @@ extension PreferencesViewController: PreferencesViewInput {
     }
 }
 
-extension PreferencesViewController: PreferencesViewDelegate {
+extension PreferencesViewController: PreferencesViewDelegate {    
     func preferencesViewDidPressedCancelButton(_ view: PreferencesView) {
         
     }
@@ -54,7 +55,11 @@ extension PreferencesViewController: PreferencesViewDelegate {
         presenter?.view(self, rootCatalogWasChanged: url)
     }
     
-    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView) { }
+    func preferencesViewDidPressedAddFolderButton(_ view: PreferencesView, selectedFolder: Folder?) {
+        presenter?.outlineManager?.createFolder(withTitle: "Новая папка", inFolder: selectedFolder)
+    }
     
-    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView) { }
+    func preferencesViewDidPressedDeleteFolderButton(_ view: PreferencesView, selectedFolder: Folder?, fromFolder: Folder?) {
+        presenter?.outlineManager?.remove(folder: selectedFolder!, fromFolder: fromFolder)
+    }
 }
